@@ -4,5 +4,6 @@ import com.Entity.ResultMassage;
 import com.Entity.comments;
 
 public interface commentsImpl {
-    ResultMassage GetMsg(comments comments);
+    ResultMassage GetCommentsList(int UserId,int ArticleId);
+    ResultMassage insertComments(comments comments);
 }

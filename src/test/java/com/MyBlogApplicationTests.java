@@ -20,7 +20,7 @@ class MyBlogApplicationTests {
     UserInformationService informationService;
     @Test
     void test01(){
-        System.out.println(commentsService.GetMsg(new comments(2, 2, 3, 4, new Date(), "我觉得你像傻逼一样", 8)));
+        System.out.println(commentsService.GetCommentsList(123, 44));
     }
     @Test
     void Test02(){
@@ -35,9 +35,15 @@ class MyBlogApplicationTests {
     LablesServIce lablesServIce;
     @Autowired
     setArtitleLabelService setArtitleLabelMapper1;
+    @Autowired
+    UserInformationService userInformationService;
+    @Test
+    void Test013(){
+        System.out.println(userInformationService.UserList(1, 1).getResultContent().toString());
+    }
     @Test
     void Test01(){
-        System.out.println(lablesServIce.SelectLabImpl(1369194318, "asjx"));
+        articlesService1.LatestArticle().getResultContent().forEach(e-> System.out.println(e.getArticleLikeCount()));
 
     }
     @Autowired
@@ -265,8 +271,11 @@ class MyBlogApplicationTests {
                 "当请求失败、被拒绝、超时或短路时执行回退逻辑。\n" +
                 ">近乎实时地监控指标和配置更改。\n" +
                 "\n";
-       articlesService1.InsertArticles(new articles(2332513,1369194318,"asjx",N,0,0,new Date(),0),"asjx",1369194318);
-    }
+        for (int i = 10; i < 20; i++) {
+            articlesService1.InsertArticles(new articles(i*10000,1369194318,"asjx",N,0,0,new Date(),i),"asjx",1369194318);
+
+        }
+        }
     @Test
     void Test024(){
         System.out.println(articlesService1.DeleteArticles("Spring", 1963470712));
