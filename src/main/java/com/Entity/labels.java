@@ -19,4 +19,6 @@ public class labels {
     private String labelAlias;
     /*标签描述*/
     private String labelDescription;
+    /*UserID*/
+    private int userId;
 }
