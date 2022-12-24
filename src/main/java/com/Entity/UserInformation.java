@@ -7,6 +7,7 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.security.MessageDigest;
 import java.util.Date;
 
 @Data
@@ -38,9 +39,9 @@ public class UserInformation {
     @TableField("user_registration_time")
     /*用户注册时间*/
     private Date userRegistrationtTime;
-    @TableField("user_birthday")
-    /*用户生日*/
-    private Date userBirthday;
+    @TableField("PasswordSalt")
+    /*加密盐*/
+    private String InfillSalt;
     @TableField("user_age")
     /*用户年龄*/
     private int userAge;
@@ -51,16 +52,4 @@ public class UserInformation {
     /*用户昵称*/
     private String userNickname;
 
-    public UserInformation(String userIp, String userName, String userPassWrod, String userEmail, String userProfilePhoto, Date userRegistrationtTime, Date userBirthday, int userAge, String userTelephoneNumber, String userNickname) {
-        this.userIp = userIp;
-        this.userName = userName;
-        this.userPassWrod = userPassWrod;
-        this.userEmail = userEmail;
-        this.userProfilePhoto = userProfilePhoto;
-        this.userRegistrationtTime = userRegistrationtTime;
-        this.userBirthday = userBirthday;
-        this.userAge = userAge;
-        this.userTelephoneNumber = userTelephoneNumber;
-        this.userNickname = userNickname;
-    }
 }

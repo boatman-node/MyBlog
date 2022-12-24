@@ -9,6 +9,7 @@ import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.util.DigestUtils;
 
 import java.util.Date;
 
@@ -20,11 +21,11 @@ class MyBlogApplicationTests {
     UserInformationService informationService;
     @Test
     void test01(){
-        System.out.println(commentsService.GetCommentsList(123, 44));
+
     }
     @Test
     void Test02(){
-        System.out.println(informationService.RegisteredUsers(new UserInformation( 1963887712,"23夫2234", "15007074662", "13691943186", "1963470712@qq.com", "https://img0.baidu.com/it/u=1705694933,4002952892&fm=253&app=138&size=w931&n=0&f=JPEG&fmt=auto?sec=1671901200&t=c276753ba75660c9a8e4a86e970e84a8", new Date(), new Date(),8 , "15007074662", "rrrr")));
+        System.out.println(informationService.RegisteredUsers(new UserInformation( 11342142,"23夫2874", "151037074662", "1369186", "1963470712@qq.com", "https://img0.baidu.com/it/u=1705694933,4002952892&fm=253&app=138&size=w931&n=0&f=JPEG&fmt=auto?sec=1671901200&t=c276753ba75660c9a8e4a86e970e84a8", new Date(),null,8 , "15007074662", "rrrr")));
     }
 
     @Test

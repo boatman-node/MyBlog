@@ -1,5 +1,6 @@
 package com.Servcie;
 
+import com.Config.MD5Utils;
 import com.Entity.ResultMassage;
 import com.Entity.UserInformation;
 import com.Impl.UserInformationImpl;
@@ -16,6 +17,8 @@ import java.util.List;
 public class UserInformationService implements UserInformationImpl {
     @Autowired
     UserInformationMapper informationMapper;
+    @Autowired
+    MD5Utils md5Utils;
     /*注册用户*/
     @Override
     public ResultMassage RegisteredUsers(UserInformation userInformation) {
@@ -23,6 +26,9 @@ public class UserInformationService implements UserInformationImpl {
         if(SelectUserName(userInformation.getUserId()).getMassageCode()==200){
             return resultMassage;
         }
+        String s = md5Utils.GetUUid().substring(0,8);
+        userInformation.setUserPassWrod(md5Utils.formPassToDBPass(userInformation.getUserPassWrod(),s));
+        userInformation.setInfillSalt(s);
         return informationMapper.insert(userInformation)>0?new ResultMassage(200,"注册用户成功！"):resultMassage;
     }
     /*更新数据*/
@@ -54,6 +60,13 @@ public class UserInformationService implements UserInformationImpl {
         LambdaQueryWrapper<UserInformation> queryWrapper = new LambdaQueryWrapper<>();
         return new ResultMassage<>(200,informationMapper.selectPage(rowPage,queryWrapper).getRecords());
     }
+
+    @Override
+    public void aveUserInformation(UserInformation userInformation) {
+
+
+    }
+
 
 
 }

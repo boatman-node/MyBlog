@@ -13,4 +13,6 @@ public interface UserInformationImpl {
 
      ResultMassage<String> DeleteUser(int UserId);
      ResultMassage<List<UserInformation>> UserList(int page,int pageSiz);
+
+     void aveUserInformation(UserInformation userInformation);
 }
